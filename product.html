@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#252a28">
+  <title>Dijital Ürün Kimliği — DPI Studio</title>
+  <meta name="description" content="NFC / QR Digital Product Identity ve Digital Product Passport demo sayfası.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="product">
+  <div id="notFound" class="product-not-found hidden"><div class="not-found-card"><span class="tag">Product not found</span><h1>Ürün kimliği bulunamadı</h1><p style="color:var(--muted)">Bağlantıdaki ürün ID'si demo veri setiyle eşleşmiyor. Kimliği değiştirmeden rastgele ürün gösterilmedi.</p><a href="index.html#generator" class="btn btn-primary">Demo oluşturucuya dön</a></div></div>
+  <div id="productApp" class="hidden product-page">
+    <div class="demo-strip"><span>Demo Verification</span> · Cryptographic NFC verification is not active</div>
+    <header class="topbar">
+      <a class="logo" href="index.html"><span class="logo-mark"></span><span>DPI Studio</span></a>
+      <div class="top-actions"><span class="tag">Interactive Demo</span><button class="icon-btn" id="shareProduct" aria-label="Ürün bağlantısını paylaş"><svg class="icon" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4M8.6 13.5l6.8 4"/></svg></button></div>
+    </header>
+    <section class="product-hero">
+      <div class="product-shell product-hero-grid" style="padding-top:0;padding-bottom:0">
+        <div>
+          <div class="crumb">Digital product identity / <span id="heroType"></span></div>
+          <div class="product-brand" id="heroBrand"></div><h1 id="heroName"></h1><div class="model-line" id="heroModel"></div><div class="serial-badge" id="heroSerial"></div>
+          <div class="verification"><div class="verify-icon"><svg class="icon" viewBox="0 0 24 24"><path d="m7 12 3 3 7-7"/></svg></div><div><strong>Orijinal Ürün Doğrulandı</strong><small>Demo verification — cryptographic NFC verification is not active.</small></div></div>
+          <div class="product-meta"><div><small>Üretim</small><b id="heroDate"></b></div><div><small>Ülke</small><b id="heroCountry"></b></div><div><small>Enerji / verim</small><b id="heroEnergy"></b></div></div>
+        </div>
+        <div class="product-art" id="productArt"><span class="art-label" id="artLabel"></span></div>
+      </div>
+    </section>
+
+    <main class="product-shell">
+      <div id="campaignBanner" class="status-banner hidden"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3 2.7 19h18.6L12 3Z"/><path d="M12 9v4M12 17h.01"/></svg><div><b>Üretim grubu bildirimi</b><br><span id="campaignText"></span></div></div>
+      <section aria-labelledby="quickTitle"><h2 class="content-title" id="quickTitle">Hızlı işlemler</h2><div class="quick-grid" id="quickGrid"></div></section>
+
+      <section class="content-section" id="overview"><h2 class="content-title">Ürüne genel bakış</h2><div class="content-grid"><article class="card"><h3>Ürün bilgileri</h3><dl class="data-list" id="productInfo"></dl></article><article class="card"><h3>Sonraki bakım</h3><div id="maintenanceBox"></div><dl class="data-list" id="maintenanceInfo"></dl></article></div></section>
+
+      <section class="content-section" id="manual"><h2 class="content-title">İnteraktif kullanım kılavuzu</h2><div id="manualList"></div></section>
+
+      <section class="content-section" id="errors"><h2 class="content-title">Akıllı hata kodları</h2><div class="content-grid"><article class="card"><input class="search" id="errorSearch" type="search" placeholder="Hata kodu veya açıklama ara…" autocomplete="off"><div class="error-chips" id="errorChips"></div><div id="errorDetail"></div></article><article class="card"><h3>Hızlı tanılama</h3><p style="color:var(--muted);font-size:13px">Kod ekranınızda görünüyorsa seçin. Güvenli kullanıcı kontrollerinden sonra sorun sürerse ürün bilgileri otomatik eklenmiş bir demo servis kaydı oluşturun.</p><div class="form-summary" id="diagnosticSummary"></div><button class="btn btn-primary btn-block" style="margin-top:14px" id="requestService">Servis Talebi Oluştur</button></article></div></section>
+
+      <section class="content-section" id="warranty"><h2 class="content-title">Dijital garanti</h2><div class="content-grid"><article class="card"><dl class="data-list" id="warrantyInfo"></dl><div class="progress"><span id="warrantyProgress"></span></div><div class="progress-caption" id="warrantyCaption"></div></article><article class="card ownership"><h3>Bu ürün size mi ait?</h3><p>Kimliği bu tarayıcıya kaydedin; bakım ve servis bilgilerine daha hızlı erişin. Demo kayıtları cihazlar arasında eşitlenmez.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-primary" id="claimProduct">Ürünü Kaydet</button><button class="btn btn-outline hidden" id="transferProduct">Sahipliği Devret</button></div><div id="ownershipStatus" style="font-size:11px;margin-top:13px;color:#8fe0bf"></div></article></div></section>
+
+      <section class="content-section" id="service"><h2 class="content-title">Servis geçmişi</h2><div class="content-grid"><article class="card"><div class="timeline" id="serviceTimeline"></div></article><article class="card"><h3>Yetkili servis</h3><p style="font-size:13px;color:var(--muted)">Konum izni veya gerçek çağrı merkezi bağlantısı kullanılmaz. Demo formu ürün verilerini otomatik taşır.</p><button class="btn btn-dark btn-block" id="authorizedService">Yakındaki Servisleri Göster</button><button class="btn btn-outline btn-block" style="margin-top:9px" id="generalServiceRequest">Servis Kaydı Aç</button></article></div></section>
+
+      <section class="content-section" id="lifecycle"><h2 class="content-title">Ürün yaşam döngüsü & batch</h2><div class="content-grid"><article class="card"><div class="timeline" id="lifecycleTimeline"></div></article><article class="card"><h3>Üretim batch bilgisi</h3><dl class="data-list" id="batchInfo"></dl><div id="batchNotice"></div></article></div></section>
+
+      <section class="content-section" id="parts"><h2 class="content-title">Uyumlu yedek parçalar</h2><div class="part-list" id="partsList"></div></section>
+
+      <section class="content-section" id="passport"><div class="section-head"><div><p class="eyebrow">Digital Product Passport</p><h2 class="content-title" style="margin:0">Şeffaf ürün verisi</h2></div><span class="tag">DPP-ready demo</span></div><article class="card"><div class="passport-grid" id="passportGrid"></div></article></section>
+
+      <section class="content-section" id="assistant"><h2 class="content-title">Ürün asistanına sor</h2><div class="content-grid"><article class="card chat"><span class="chat-label">Demo AI Assistant</span><div class="messages" id="messages"><div class="message bot">Merhaba. Bu ürünün garanti, bakım, hata kodu ve kullanım bilgileri hakkında yardımcı olabilirim.</div></div><div class="suggestions" id="suggestions"><button class="suggestion">Garanti ne zaman bitiyor?</button><button class="suggestion">Son bakım ne zaman yapıldı?</button><button class="suggestion">E04 hatası alıyorum.</button><button class="suggestion">Filtreyi nasıl temizlerim?</button></div><form class="chat-form" id="chatForm"><input id="chatInput" aria-label="Asistana sorun" placeholder="Mesajınızı yazın…" autocomplete="off"><button aria-label="Gönder"><svg class="icon" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4 20-7Z"/><path d="M22 2 11 13"/></svg></button></form></article><article class="card"><h3>Teknik özellikler</h3><dl class="data-list" id="techInfo"></dl><button class="btn btn-soft btn-block" style="margin-top:15px" id="downloadSpecs">Teknik Özeti İndir</button></article></div></section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Ürün navigasyonu">
+      <button data-target="overview" class="active"><svg class="icon" viewBox="0 0 24 24"><path d="M3 11 12 3l9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1Z"/></svg>Overview</button>
+      <button data-target="errors"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Support</button>
+      <button data-target="service"><svg class="icon" viewBox="0 0 24 24"><path d="m14.7 6.3 3-3a4 4 0 0 1-5 5L6 15l-3 6 6-3 6.7-6.7a4 4 0 0 1 5-5l-3 3"/></svg>Service</button>
+      <button data-target="passport"><svg class="icon" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>Passport</button>
+      <button data-target="assistant"><svg class="icon" viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"/></svg>More</button>
+    </nav>
+  </div>
+
+  <div class="modal" id="globalModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-box"><button class="modal-close" data-close-modal aria-label="Kapat">×</button><h2 id="modalTitle"></h2><div id="modalBody"></div></div></div>
+  <div class="toast" id="toast"></div>
+  <script src="products.js"></script><script src="app.js"></script>
+</body>
+</html>

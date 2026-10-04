@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#252a28">
+  <title>DPI Studio — NFC / QR Digital Product Identity</title>
+  <meta name="description" content="NFC ve QR tabanlı Digital Product Identity & Digital Product Passport interaktif demo.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="dashboard">
+  <div class="demo-strip"><span>Interactive Demo</span> · Gerçek üretim veya kimlik doğrulama sistemi değildir</div>
+  <header class="topbar">
+    <a class="logo" href="index.html"><span class="logo-mark"></span><span>DPI Studio</span></a>
+    <div class="top-actions"><span class="tag">Demo Environment</span><a class="btn btn-soft" href="#generator">QR Demo</a></div>
+  </header>
+
+  <main>
+    <section class="shell dashboard-hero">
+      <div>
+        <p class="eyebrow">Connected product experience</p>
+        <h1>Her fiziksel ürün için yaşayan bir dijital kimlik.</h1>
+        <p class="hero-copy">NFC veya QR ile ürünü doğrulayın, doğru destek içeriğine ulaşın, yaşam döngüsünü yönetin ve Digital Product Passport verisini tek deneyimde sunun.</p>
+        <div class="hero-pills"><span class="soft-pill"><i></i>NFC ready</span><span class="soft-pill"><i></i>QR linked</span><span class="soft-pill"><i></i>DPP compatible</span><span class="soft-pill"><i></i>Service connected</span></div>
+      </div>
+      <div class="scan-visual" aria-hidden="true">
+        <div class="nfc-rings"><span></span><span></span><span></span></div>
+        <div class="scan-device"><div class="scan-notch"></div><div class="scan-card"><div class="scan-product"><svg class="icon" style="width:64px;height:64px" viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="2"/><circle cx="12" cy="8" r="2.5"/><path d="M8 15h8M8 18h5"/></svg></div><div style="font-size:10px;color:#6b756f;margin-top:12px">NOVATHERM</div><b style="font-size:13px">Thermo X24</b><div style="font-size:9px;color:#16835a;margin-top:6px">● Demo verification active</div></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="generator">
+      <div class="shell">
+        <div class="section-head"><div><p class="eyebrow">Live experience</p><h2>QR & NFC demo alanı</h2><p>Rastgele bir müşteri senaryosu seçin ve ürün kimliğini açın.</p></div></div>
+        <div class="demo-grid">
+          <article class="panel generator">
+            <h3>Demo ürün oluşturucu</h3><p>Her seçim QR oluşturulurken sabitlenir. Aynı QR her zaman aynı ürün kimliğine gider.</p>
+            <div class="generator-actions">
+              <button class="btn btn-primary btn-block" id="generateQr"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h4M14 21h3M21 14v3"/></svg>Rastgele Demo Ürün Oluştur</button>
+              <button class="btn btn-dark btn-block" id="simulateNfc"><svg class="icon" viewBox="0 0 24 24"><path d="M8.5 8.5a5 5 0 0 1 0 7M5.5 5.5a9.2 9.2 0 0 1 0 13M12 11v2"/></svg>NFC Okutmayı Simüle Et</button>
+            </div>
+            <div class="file-warning hidden" id="fileWarning">Telefonla okutulabilen QR oluşturmak için demoyu yayınladığınız HTTPS adresinden açın. Bu dosya önizlemesindeki bağlantılar yalnızca bu bilgisayarda açılır.</div>
+          </article>
+          <article class="panel qr-result">
+            <div class="qr-box" id="qrcode"><div class="qr-placeholder"><div class="pulse"></div>QR oluşturmak için soldaki butona basın</div></div>
+            <div class="qr-info"><span class="tag">Selected identity</span><h3 id="qrProduct">Henüz ürün seçilmedi</h3><div class="serial-line" id="qrSerial">—</div><div class="url-preview" id="qrUrl">Benzersiz ürün URL'si burada görünecek.</div><a class="btn btn-outline hidden" id="openProduct" href="#">Ürün kimliğini aç</a><button class="btn btn-soft hidden" id="newQr">Yeni QR Oluştur</button></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="analytics">
+      <div class="shell">
+        <div class="section-head"><div><p class="eyebrow">Manufacturer dashboard</p><h2>Üretici görünümü</h2><p>Bağlı ürün filosundan örnek içgörüler. Tüm değerler demo verisidir.</p></div><span class="tag">Son 30 gün</span></div>
+        <div class="stats">
+          <article class="panel stat"><small>Toplam kayıtlı ürün</small><strong>24.820</strong><span class="trend">↑ %8,4</span></article>
+          <article class="panel stat"><small>Aktif dijital kimlik</small><strong>19.472</strong><span class="trend">%78,5 aktif</span></article>
+          <article class="panel stat"><small>Bu ay QR / NFC okutma</small><strong>8.391</strong><span class="trend">↑ %14,2</span></article>
+          <article class="panel stat"><small>Servis talepleri</small><strong>284</strong><span class="trend">↓ %3,1</span></article>
+          <article class="panel stat"><small>Garanti sorguları</small><strong>1.820</strong><span class="trend">↑ %11,8</span></article>
+        </div>
+        <div class="analytics-grid">
+          <article class="panel chart-card"><h3>Servis talep trendi</h3><div class="bar-chart" aria-label="Aylık servis talepleri"><div class="bar-wrap"><div class="bar" style="height:44%" data-value="152"></div><span>May</span></div><div class="bar-wrap"><div class="bar" style="height:56%" data-value="188"></div><span>Haz</span></div><div class="bar-wrap"><div class="bar" style="height:50%" data-value="171"></div><span>Tem</span></div><div class="bar-wrap"><div class="bar" style="height:68%" data-value="226"></div><span>Ağu</span></div><div class="bar-wrap"><div class="bar" style="height:61%" data-value="204"></div><span>Eyl</span></div><div class="bar-wrap"><div class="bar" style="height:84%" data-value="284"></div><span>Eki</span></div></div></article>
+          <article class="panel chart-card"><h3>Ürün kategorisi dağılımı</h3><div class="distribution"><div class="dist-row"><span>HVAC</span><div class="track"><div class="fill" style="width:72%"></div></div><b>38%</b></div><div class="dist-row"><span>Beyaz eşya</span><div class="track"><div class="fill" style="width:51%"></div></div><b>27%</b></div><div class="dist-row"><span>Enerji</span><div class="track"><div class="fill" style="width:34%"></div></div><b>18%</b></div><div class="dist-row"><span>Endüstriyel</span><div class="track"><div class="fill" style="width:21%"></div></div><b>11%</b></div><div class="dist-row"><span>Diğer</span><div class="track"><div class="fill" style="width:12%"></div></div><b>6%</b></div></div></article>
+        </div>
+        <div class="insights">
+          <article class="panel insight"><h3>En çok okutulan ürünler</h3><div class="rank"><span>Thermo X24</span><b>1.426</b></div><div class="rank"><span>AeroCool 18</span><b>1.102</b></div><div class="rank"><span>AquaWash 9</span><b>942</b></div></article>
+          <article class="panel insight"><h3>En çok görüntülenen hatalar</h3><div class="rank"><span>E04 · Düşük basınç</span><b>38%</b></div><div class="rank"><span>E01 · Başlatma</span><b>24%</b></div><div class="rank"><span>E07 · Sensör</span><b>17%</b></div></article>
+          <article class="panel insight"><h3>Batch uyarıları</h3><div class="alert-item"><b>MN-26-03-B17</b><br>Ücretsiz yanma kontrolü · 184 ürün</div><div class="alert-item"><b>KN-25-11-G08</b><br>Yakıt hattı kontrolü · 72 ürün</div></article>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="shell footer-wide"><span>© 2026 DPI Studio · NFC / QR Digital Product Identity Platform</span><span>Prototype · No real authentication or transaction</span></footer>
+  <div class="toast" id="toast"></div>
+  <script src="qrcode.min.js"></script>
+  <script src="products.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
